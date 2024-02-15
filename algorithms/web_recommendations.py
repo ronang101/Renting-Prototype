@@ -65,6 +65,7 @@ def mixed_filtering(user_id, cur, conn, filters, filter_uni,
     # Obtaining content-based filtering matches.
     content_matches = get_top_matches(
         cur, user_id, candidate_ids, "feature", n)
+    print(content_matches)
     # Merging content and collaborative matches.
     matches.extend(content_matches)
     # Removing selected matches from candidate indices again to avoid double
