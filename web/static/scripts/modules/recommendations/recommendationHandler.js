@@ -51,7 +51,7 @@ export class RecommendationHandler {
         this.seenUserIds.push(rec.id)
         this.displayRecommendation(rec)
         // Load new recommendations before running out of current recommendations for better load times. The == 30 prevents a loop from occuring.
-        if (this.currentRecIndex === this.recommendations.length - 1 && this.recommendations.length === 3) {
+        if (this.currentRecIndex === this.recommendations.length - 1 && this.recommendations.length === 30) {
           this.fetchRecommendationsEarly()
         }
         // Move to next recommendation.

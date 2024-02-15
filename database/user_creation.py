@@ -447,7 +447,7 @@ def update_user_data(conn):
         filters,
         filter_university,
         filter_profession,
-        1)
+        10)
 
     conn.commit()
     # Handling the upload and processing of the user's updated profile image.

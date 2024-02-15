@@ -65,7 +65,6 @@ def mixed_filtering(user_id, cur, conn, filters, filter_uni,
     # Obtaining content-based filtering matches.
     content_matches = get_top_matches(
         cur, user_id, candidate_ids, "feature", n)
-    print(n,content_matches)
     # Merging content and collaborative matches.
     matches.extend(content_matches)
     # Removing selected matches from candidate indices again to avoid double
@@ -132,7 +131,7 @@ def get_recommendations_for_user(cur, conn, user_id, generate=True):
             filters, filter_uni, filter_prof = user_data
             # Generating mixed filtering recommendations.
             recommendations = mixed_filtering(
-                user_id, cur, conn, filters, filter_uni, filter_prof, 1)
+                user_id, cur, conn, filters, filter_uni, filter_prof, 10)
         else:
             # Check for any pre exisiting recommendations in the database that
             # haven't yet been interacted with.
