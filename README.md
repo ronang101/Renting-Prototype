@@ -11,13 +11,12 @@ To experience the platform users are required to create an account. Since this i
 2. Click on "Sign in with Google"
 3. Fill in the required details, ensuring you meet these prerequisites:
   
-Age: 20 - 28
-
-Monthly Budget: 500 - 1000
-  
-City: London
-  
-Ideal Move-In Date: Dates must be between 26/02/2024 - 25/03/2024
+<table>
+   <tr><td>Age:</td><td>20 - 28</td></tr>
+   <tr><td>Monthly Budget:</td><td>500 - 1000</td></tr>
+   <tr><td>City:</td><td>London</td></tr>
+   <tr><td>Ideal Move-In Date:</td><td>Dates must be between 26/02/2024 - 25/03/2024</td></tr>
+   </table>
   
 The reason for these requirements is due to the way the website matches users. We look for users who fall within your selected age range, monthly budget range, looking in the same city as you, have some overlap in moving dates and you can also select to match based on university and occupation. Since this is only a prototype the fake users I have made fall within these ranges, hence why you must do the same.
 
