@@ -9,7 +9,8 @@ To experience the platform users are required to create an account. Since this i
 ### Account Creation
 1. Visit https://renting-prototype-b75713326214.herokuapp.com/
 2. Click on "Sign in with Google"
-3. Fill in the required details, ensuring you meet these prerequisites:
+3. Fill in the required details, ensuring you meet the prerequisites listed below. The reason for these requirements is due to the way the website matches users. We look for users who fall within your selected age range, monthly budget range, looking in the same city as you, have some overlap in moving dates and you can also select to match based on university and occupation. Since this is only a prototype the fake users I have made fall within these ranges, hence why you must do the same. The prerequisites are here:
+
   
 <table>
    <tr><td>Age:</td><td>20 - 28</td></tr>
@@ -18,7 +19,6 @@ To experience the platform users are required to create an account. Since this i
    <tr><td>Ideal Move-In Date:</td><td>Dates must be between 26/02/2024 - 25/03/2024</td></tr>
    </table>
   
-The reason for these requirements is due to the way the website matches users. We look for users who fall within your selected age range, monthly budget range, looking in the same city as you, have some overlap in moving dates and you can also select to match based on university and occupation. Since this is only a prototype the fake users I have made fall within these ranges, hence why you must do the same.
 
 4. Use the platform, please like any users you want and feel free to email me at ronanj.geraghty@gmail.com and I will make the likes mutual so that you can view matches.
 
