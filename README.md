@@ -10,12 +10,18 @@ To experience the platform users are required to create an account. Since this i
 1. Visit https://renting-prototype-b75713326214.herokuapp.com/
 2. Click on "Sign in with Google"
 3. Fill in the required details, ensuring you meet these prerequisites:
-  Age: 20 - 28
-  Monthly Budget: 500 - 1000
-  City: London
-  Ideal Move-In Date: Dates must be between 26/02/2024 - 25/03/2024
-  The reason for these requirements is due to the way the website matches users. We look for users who fall within your selected age range, monthly budget range, looking in the same city as you, have some overlap in moving dates and you can also select to match based on university and occupation. Since this is only a prototype the fake users I have made fall within these ranges, hence why you must do the same.
-5. Use the platform, please like any users you want and feel free to email me at ronanj.geraghty@gmail.com and I will make the likes mutual so that you can view matches.
+  
+Age: 20 - 28
+
+Monthly Budget: 500 - 1000
+  
+City: London
+  
+Ideal Move-In Date: Dates must be between 26/02/2024 - 25/03/2024
+  
+The reason for these requirements is due to the way the website matches users. We look for users who fall within your selected age range, monthly budget range, looking in the same city as you, have some overlap in moving dates and you can also select to match based on university and occupation. Since this is only a prototype the fake users I have made fall within these ranges, hence why you must do the same.
+
+4. Use the platform, please like any users you want and feel free to email me at ronanj.geraghty@gmail.com and I will make the likes mutual so that you can view matches.
 
 ## Notes
 I took on this project as a way to learn more about web development and good coding practice. This project was used to display my coding ability, learn new concepts and learn how to write python and javascript in a standarized manner. Through previous projects I have created I noticed the code was very much written for myself and only myself, I have made many projects in R through my previous job, but even with further python and js projects the code is not very well organized and is not built for collaboration. Learning from my previous errors I wanted to focus on these previous weaknesses in this project in order to improve my ability to collaborate with others. 
