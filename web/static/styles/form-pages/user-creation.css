@@ -1,0 +1,240 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    width: calc(100% - 40px); 
+    margin: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; 
+}
+
+
+h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #666;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; 
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+#submit {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#submit:hover {
+    background-color: #45a049;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+
+    #deleteAccountBtn {
+        margin-top: 20px;
+    }
+}
+
+
+
+
+.select2-selection__choice__remove {    
+    height: auto;
+    width: auto;
+    border: none !important;
+}
+
+.select2{
+    width: 100% !important;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-group input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #555;
+    background-color: #fff;
+    -webkit-appearance: none; 
+    -moz-appearance: none;   
+    appearance: none;         
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box; 
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-group input[type="date"]:hover {
+    cursor: pointer; 
+   
+}
+
+.form-group input:hover, .select2:hover {
+    border-color: #66afe9 !important;
+    outline: 0 !important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6) !important;
+}
+
+
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; 
+}
+
+#deleteAccountBtn {
+    background-color: #ff6347; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    display: inline-block;
+}
+
+#deleteAccountBtn:hover {
+    background-color: #e35d45; 
+}
+
+
+#confirmationModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+#confirmationModal button {
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+
+.profile-picture {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%; 
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    overflow: hidden;
+    border: 3px solid #555658;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.profile-picture:hover{
+    cursor: pointer;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    object-position: center; 
+    display: block;
+}
+
+
+.transport-group label, .time-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .transport-btn {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    cursor: pointer;
+    outline: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .transport-btn .material-icons {
+    font-size: 24px;
+    color: #555555;
+  }
+  
+  .transport-btn.selected {
+    background-color: #e0e0e0;
+  }
+  
+  .styled-select {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: 150px;
+    cursor: pointer;
+  }
+  

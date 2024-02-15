@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <link rel="stylesheet" href="../static/styles/additional/pikaday.min.css">
+    <link rel="stylesheet" href="../static/styles/main-design/recommendations.css">
+    <link rel="stylesheet" href="../static/styles/main-design/budget.css">
+    <link rel="stylesheet" href="../static/styles/main-design/about.css">
+    <link rel="stylesheet" href="../static/styles/main-design/mutual.css">
+    <link rel="stylesheet" href="../static/styles/main-design/calendar.css">
+    <link rel="stylesheet" href="../static/styles/main-design/side-menu.css">
+    <link rel="stylesheet" href="../static/styles/main-design/bio-extra-info.css">
+    <link rel="stylesheet" href="../static/styles/main-design/report.css">
+    <link rel="stylesheet" href="../static/styles/animations/animations.css">
+    <link rel="stylesheet" href="../static/styles/main-design/map.css">
+    <script src="https://cdn.jsdelivr.net/npm/maplibre-gl/dist/maplibre-gl.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <h1>Recommendations</h1>
+    <div class="hamburger-menu-container">
+        <div class="hamburger-menu" id = "hamburger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div id="side-panel" class="side-panel">
+        <a  href = "/view-matches" id="matches-link">Matches</a>
+        <a  href="/edit-profile" id="edit-profile-link">Edit Profile</a>
+        <a  href="/logout" id="logout-link">Logout</a>
+    </div>
+
+    <div id="no-recommendation-container" style="display: none; text-align:center;">
+        <h2>Check back later!</h2>
+        <p>We're currently finding new recommendations for you. Try adjusting your filter ranges for more immediate results.</p>
+    </div>
+
+
+    <div id="recommendation-container">            
+        <div class="recommendation">
+            <button id="report-btn" class="report-btn">
+                <i id = "circle-ex" class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            </button>         
+            <h2 id="rec-name" >Name</h2>
+            <h3 id="rec-city" >City</h3>
+            <div class="profile-picture">
+                <img id="profile-img"src="" alt="Profile Image">
+            </div>
+            <div class="info-map-tabs">
+                <div class="tab active" id="userInfoTab">User Info</div>
+                <div class="tab" id="mapTab">Map</div>
+            </div>
+            <div id="map" style="display: none;"></div>
+            <div class="userInfoContent" id="userInfoContent">
+                <div class="important-information-sections">
+                    <div class="bio">
+                        <h2 class="bio-title">Bio</h2>
+                        <p class="bio-container" id="bio-container">
+                            Bio
+                        </p>
+                    </div>
+                    <div class="extra-information-container">
+                        <div class="info-container age-container">
+                            <i class="fas fa-birthday-cake"></i>
+                            <span>Age</span>
+                            <p id = "rec-age">age</p>
+                        </div>
+                        <div class="info-container university-container">
+                            <i class="fas fa-university"></i>
+                            <span>University</span>
+                            <p id = "rec-uni">university</p>
+                        </div>
+                        <div class="info-container occupation-container">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Occupation</span>
+                            <p id = "rec-prof">Profession</p>
+                        </div>
+                        <div class="info-container duration-container">
+                            <i class="fas fa-clock"></i>
+                            <span>Duration</span> 
+                            <p id = "rec-duration">Duration</p>
+                        </div>
+                    </div>
+                    
+                    <div class="budget-calendar-flex"> 
+                        <div class="budget-container">
+                            <h2 class="budget-title">Monthly Budget</h2>
+                            <div class="budget-limits">
+                                <div class="budget-label-low">
+                                    <span class="budget-label">Minimum</span>
+                                    <span id="lower-limit">£$0</span>
+                                </div>
+                                <div class="budget-gauge">
+                                    <svg viewBox="0 0 36 36" class="circular-chart"> 
+                                        <!-- Arc -->
+                                        <path class="circle"
+
+                                        fill="none" 
+                                        transform="rotate(-135 18 18)"
+                                        d="M18 2
+                                            a 16 16 0 1 1 -16 16"
+                                        />
+                                        <path id="gauge-bg" class="circle-bg"
+
+                                        fill="none" 
+                                        stroke-dasharray =  "0,100"
+                                        transform="rotate(-135 18 18)"
+
+                                        d="M18 2
+                                            a 16 16 0 1 1 -16 16"
+                                    />
+                                    </svg>
+                                </div>
+                                <div class="budget-label-up">
+                                    <span class="budget-label">Maximum</span>
+                                    <span id="upper-limit">£0</span>
+                                </div>
+                            </div>
+                            <div class="budget-labels">
+                                <span class="budget-label-min">£500</span>
+                                <span class="budget-label-max">£2k+</span>
+                            </div>
+                        </div>
+                        <div class="calendar-container" id="calendar-container">
+                            <div id="calendar" class="pikaday-container"></div>
+                        </div>
+                        
+                        <div class="budget-calendar-container">
+                            <div class="budget-calendar">
+                                <div id = "budget-switch" class="budget-calendar-title-container">
+                                    <h2  class="budget-calendar-title">Budget</h2>
+                                </div>
+                                <div id = "calendar-switch" class="budget-calendar-title-container inactive">
+                                    <h2  class="budget-calendar-title">Calendar</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-sections">
+                    <div class="about-section">
+                        <h3 class="about-title">About Me</h3>
+                        <div class="features-container" id="about-me-container">
+                            <!-- Dynamic content for About Me -->
+                        </div>
+                    </div>
+                    <div class="lifestyle-section">
+                        <h3 class="about-title">Lifestyle</h3>
+                        <div class="features-container" id="lifestyle-container">
+                            <!-- Dynamic content for Lifestyle -->
+                        </div>
+                    </div>
+                    <div class="interests-section">
+                        <h3 class="about-title">Interests</h3>
+                        <div class="features-container" id="interests-container">
+                            <!-- Dynamic content for Interests -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="interaction-buttons">
+                <button id = "like-btn" class="like-btn" >Like</button>
+                <button id = "dislike-btn" class="dislike-btn" >Dislike</button>
+                <button id = "superlike-btn" class="superlike-btn">Superlike</button>
+            </div>
+        </div>
+    </div>
+    <div id="mutualInterestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 class="modal-title">It's a Match!</h2>
+            </div>
+            <div class="modal-body">
+                <p class="match-text"></p>
+                <div class="modal-actions">
+                    <button class="modal-close-btn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="report-modal" class="report-modal">
+        <div class="report-modal-content">
+            <span class="report-close">&times;</span>
+            <h2 id = "report-title">Report User</h2>
+            <form id="report-form">
+                <input type="hidden" id="reportedUserId" name="reportedUserId" value="">
+                <p>Reason for reporting:</p>
+                <label class="report-option">
+                    <input type="radio" name="reason" value="inappropriate" checked>
+                    <span class="checkmark"></span>
+                    Inappropriate Content
+                </label>
+                <label class="report-option">
+                    <input type="radio" name="reason" value="abuse">
+                    <span class="checkmark"></span>
+                    Abuse
+                </label>
+                <label class="report-option">
+                    <input type="radio" name="reason" value="fake">
+                    <span class="checkmark"></span>
+                    Fake Account
+                </label>
+                <label class="report-option">
+                    <input type="radio" name="reason" value="other">
+                    <span class="checkmark"></span>
+                    Other
+                </label>
+                <input type="submit" value="Submit Report">
+            </form>
+        </div>
+    </div>
+    <div id="thank-modal" class="thank-modal">
+        <div id="thank-you-message" style="display: block;">
+            <p>Thank you! We will review your submission.</p>
+            <button id="thank-you-close-btn">Close</button>
+        </div>
+    </div>
+    
+    <script>
+        var isochroneData = {{ isochrone_data|tojson }};
+        var latitude = {{ latitude|tojson }};
+        var longitude = {{ longitude|tojson }};
+    </script>
+    <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>  
+    <script src="../static/scripts/additional/pikaday.min.js"></script>  
+    <script type="module" src="../static/scripts/main-scripts/recommendations.js"></script>
+
+  
+</body>
+
+
+</html>

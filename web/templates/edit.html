@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="../static/styles/additional/select2.min.css">
+    <link rel="stylesheet" href="../static/styles/form-pages/user-creation.css">
+    <link rel="stylesheet" href="../static/styles/main-design/side-menu.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/maplibre-gl/dist/maplibre-gl.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div id="header">
+            <h1>Edit Your Profile</h1>
+            <div class="hamburger-menu-container">
+                <div class="hamburger-menu" id = "hamburger-menu">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div id="side-panel" class="side-panel">
+                <a href="/view-recommendations" id="recommendation-link">Recommendations</a>
+                <a  href = "/view-matches" id="matches-link">Matches</a>
+                <a  href="/logout" id="logout-link">Logout</a>
+            </div>
+            <form id="deleteAccountForm" action="/delete-account" method="POST" style="display: none;">
+                <!-- Hidden form for account deletion -->
+            </form>
+            <button type="button" id="deleteAccountBtn">Delete Account</button>
+        </div>
+        <div id="confirmationModal" style="display:none;">
+            <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+            <button type="button" id="confirmDelete" >Yes, delete my account</button>
+            <button type="button" id="cancelDelete">Cancel</button>
+        </div>
+        <form action="/update_user" method="post" id="profile_form" enctype="multipart/form-data">
+            <input type="hidden" id="user_id" name="user_id" value="{{ user_data.id }}">
+            <div class="form-group">
+                <label for="profile_image">Profile Picture:</label>
+                <input type="file" id="profile_image" name="profile_image" accept="image/*" style="display: none;">
+                <div class="profile-picture" id="profile-picture-preview" onclick="document.getElementById('profile_image').click();">
+                    <img id="image-preview" onerror="this.src='../static/images/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg'" alt="Profile Image Preview">
+                </div>
+            </div>       
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="{{ user_data.name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" value="{{ user_data.age }}" required min="18" max="40">
+            </div>
+            <div class="form-group">
+                <label for="rent">Monthly Budget (including bills) (£):</label>
+                <input type="number" id="rent" name="rent_amount" value="{{ user_data.rent_amount }}" required min="500" max="2000">
+            </div>
+            <div class="form-group">
+                <label for="age_filter">Age Filter:</label>
+                <select id="age_filter" name="age_filter" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rent_filter">Rent Filter (£):</label>
+                <select id="rent_filter" name="rent_filter" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="duration">Duration of Renting:</label>
+                <select id="duration" name="duration" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="city_filter">City:</label>
+                <select id="city_filter" name="city_filter" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group transport-group">
+                <label>Mode of Transportation:</label>
+                <button type="button" class="transport-btn" data-mode="drive"><i class="material-icons">directions_car</i></button>
+                <button type="button" class="transport-btn" data-mode="bicycle"><i class="material-icons">directions_bike</i></button>
+                <button type="button" class="transport-btn" data-mode="walk"><i class="material-icons">directions_walk</i></button>
+                <button type="button" class="transport-btn" data-mode="bus"><i class="material-icons">directions_bus</i></button>
+                <input type="hidden" id="transportation_method" name="transportation_method" value="{{ user_data.transportation_method }}">
+            </div>
+            <div class="form-group time-group">
+                <label>Travel Time:</label>
+                <select id="travel_time" name="travel_time" class="styled-select">
+                    <option value="900">15 minutes</option>
+                    <option value="1800">30 minutes</option>
+                    <option value="2700">45 minutes</option>
+                    <option value="3600">60 minutes</option>
+                </select>
+            </div>              
+            <div class="form-group">
+                <label for="location">Please Specify Where You Are Looking to Rent:</label>
+                <div id="map" style="height: 400px;"></div>
+                <input type="hidden" id="latitude" name="latitude" value ="{{ user_data.latitude }}" required>
+                <input type="hidden" id="longitude" name="longitude" value="{{ user_data.longitude }}" required>
+            </div>
+            <div class="form-group">
+                <label for="university_filter">University (Current or Former):</label>
+                <select id="university_filter" name="university_filter" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="filter_same_university">Match with same university:</label>
+                <input type="checkbox" id="filter_same_university" name="filter_same_university" {{ 'checked' if user_data.filter_university else '' }}>
+            </div>
+            <div class="form-group">
+                <label for="profession_filter">Occupation:</label>
+                <select id="profession_filter" name="profession_filter" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="filter_same_occupation">Match with same occupation:</label>
+                <input type="checkbox" id="filter_same_occupation" name="filter_same_occupation" {{ 'checked' if user_data.filter_occupation else '' }}>
+            </div>
+            <div class="form-group">
+                <label for="move_in_date_start">Ideal Move-In Date (From):</label>
+                <input type="date" id="move_in_date_start" name="move_in_date_start"  min="2024-01-01" max="2025-12-31" value = "{{ user_data.filters['moving_filter'][0] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="move_in_date_end">Ideal Move-In Date (To):</label>
+                <input type="date" id="move_in_date_end" name="move_in_date_end" min="2024-01-01" max="2025-12-31" value = "{{ user_data.filters['moving_filter'][1] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="bio">Write a Short Bio About Yourself (300 Character Limit):</label>
+                <input type="text" id="bio" name="bio" placeholder="Introduce yourself!" required maxlength="300" value="{{ user_data.bio }}">
+            </div>
+            <div class="form-group">
+                <label for="contact_info">Indicate To Matches How To Contact You:</label>
+                <input type="text" id="contact_info" name="contact_info" placeholder="e.g., Phone number, Instagram handle, etc." value="{{ user_data.contact_info }}" required>
+            </div>
+            <div class="form-group">
+                <label>About Me:</label>
+                <select id="features" name="features" multiple="multiple" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Preferences:</label>
+                <select id="preferences" name="preferences" multiple="multiple" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>            
+            </div>
+            <div class="form-group">
+                <label for="confirm-reset">Are you sure you would like to reset your ai recommendations?</label>
+                <input type="checkbox" id="confirm-reset" name="confirm_reset">
+            </div>
+            
+            <button id = "submit" type="submit">Update Profile</button>
+        </form>
+    </div>
+    <script>
+        const userFeatures = "{{ user_data.features }}";
+        const duration = "{{ user_data.duration }}";
+        const university = {{ user_data.filters['university'] | tojson }};
+        const selectedCity = {{ user_data.filters['city'] | tojson }};
+        const profession = {{ user_data.filters['profession'] | tojson }};
+        const age = "{{ user_data.filters['age_filter'] }}";
+        const rent = "{{ user_data.filters['rent_filter'] }}";
+        const userLatitude = parseFloat("{{ user_data.latitude }}");
+        const userLongitude = parseFloat("{{ user_data.longitude }}");
+        const userTransportMode = "{{ user_data.transportation_method }}"
+        const userTravelTime = "{{ user_data.travel_time }}"
+        const userId = "{{ user_data.id }}"
+    </script>
+    <script type="module" src="../static/scripts/form-scripts/editScript.js"></script>
+    <script src="../static/scripts/additional/jquery.min.js"></script>
+    <script src="../static/scripts/additional/select2.min.js"></script>
+</body>
+</html>

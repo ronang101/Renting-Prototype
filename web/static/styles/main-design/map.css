@@ -1,0 +1,47 @@
+#map {
+    height: 364px; 
+    width: calc(100% - 30px);
+    margin: 15px;
+  }
+  
+
+.info-map-tabs {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.tab {
+    color: #333;
+    font-size: 1.2em; 
+    font-weight: 600;
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    margin-right: -1px; 
+    background-color: #f7f7f7;
+    transition: background-color 0.3s;
+}
+
+.tab:first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.tab:last-child {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    margin-right: 0; 
+}
+
+.tab:hover,
+.tab.active {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.tab.active:hover{
+    cursor: initial;
+}
+

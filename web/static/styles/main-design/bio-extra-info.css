@@ -1,0 +1,87 @@
+.extra-information-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+    min-width: 410px; 
+    align-items: flex-start; 
+    height: 144px;
+    margin-right: 10px;
+}
+
+.info-container {
+    height: 40px;
+    background-color: #f0f0f0; 
+    border-radius: 10px; 
+    padding: 10px; 
+    display: inline-flex; 
+    align-items: center;
+    gap: 8px; 
+    box-shadow: -2px 3px 5px rgba(0,0,0,0.1); 
+}
+
+.info-container span {
+    margin: 0;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-left: -2px;
+}
+
+.info-container p {
+    font-size: 0.78rem;
+    color: #666; 
+    margin: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.age-container{
+    width: 80px;
+}
+
+.occupation-container{
+    margin-top: 13px;
+    width: 170px;
+}
+
+.university-container{
+    width: 280px;
+}
+
+.duration-container{
+    margin-top: 13px;
+    width: 190px;
+}
+
+.bio {
+    background: #f0f0f0; 
+    border-radius: 20px; 
+    padding: 8px;
+    text-align: center;
+    width: 800px;
+    margin-bottom: 5px;
+    margin-right:10px;
+    height: 128px;
+    box-shadow: -2px 3px 5px rgba(0,0,0,0.1); 
+    margin-left: 5px;
+}
+
+.bio-container {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    height: 104px;
+    width: 304px;
+    font-size: 12px;
+    margin: auto;
+    margin-top: -3px;
+    overflow-wrap: break-word;
+    overflow: hidden; 
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 8px; 
+    box-sizing: border-box; 
+}
+
+.bio-title{
+    margin-bottom: 5px;
+}

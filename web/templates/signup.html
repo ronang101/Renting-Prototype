@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <link rel="stylesheet" href="../static/styles/additional/select2.min.css">
+    <link rel="stylesheet" href="../static/styles/form-pages/user-creation.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/maplibre-gl/dist/maplibre-gl.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1>Create Your Profile</h1>
+        <form action="/add_user" method="post" id="profile_form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="profile_image">Profile Picture:</label>
+                <input type="file" id="profile_image" name="profile_image" accept="image/*" style="display: none;">
+                <div class="profile-picture" id="profile-picture-preview" onclick="document.getElementById('profile_image').click();">
+                    <img id="image-preview" src="../static/images/vecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg" alt="Profile Image Preview">
+                </div>
+            </div>       
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required min="18" max="40">
+            </div>
+            <div class="form-group">
+                <label for="rent">Monthly Budget (including bills) (£):</label>
+                <input type="number" id="rent" name="rent_amount" required min="500" max="2000">
+            </div>
+            <div class="form-group">
+                <label for="age_filter">Age Filter:</label>
+                <select id="age_filter" name="age_filter" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rent_filter">Rent Filter (£):</label>
+                <select id="rent_filter" name="rent_filter" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="duration">Duration of Renting:</label>
+                <select id="duration" name="duration" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="city_filter">City:</label>
+                <select id="city_filter" name="city_filter" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group transport-group">
+                <label>Mode of Transportation:</label>
+                <button type="button" class="transport-btn selected" data-mode="drive"><i class="material-icons">directions_car</i></button>
+                <button type="button" class="transport-btn" data-mode="bicycle"><i class="material-icons">directions_bike</i></button>
+                <button type="button" class="transport-btn" data-mode="walk"><i class="material-icons">directions_walk</i></button>
+                <button type="button" class="transport-btn" data-mode="bus"><i class="material-icons">directions_bus</i></button>
+                <input type="hidden" id="transportation_method" name="transportation_method" value="drive">
+            </div>
+            <div class="form-group time-group">
+                <label>Travel Time:</label>
+                <select id="travel_time" name="travel_time" class="styled-select">
+                    <option value="900">15 minutes</option>
+                    <option value="1800">30 minutes</option>
+                    <option value="2700">45 minutes</option>
+                    <option value="3600">60 minutes</option>
+                </select>
+            </div>              
+            <div class="form-group">
+                <label for="location">Please Specify Where You Are Looking to Rent:</label>
+                <div id="map" style="height: 400px;"></div>
+                <input type="hidden" id="latitude" name="latitude" required>
+                <input type="hidden" id="longitude" name="longitude" required>
+            </div>
+            <div class="form-group">
+                <label for="university_filter">University (Current or Former):</label>
+                <select id="university_filter" name="university_filter" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="filter_same_university">Match with same university:</label>
+                <input type="checkbox" id="filter_same_university" name="filter_same_university">
+            </div>
+            <div class="form-group">
+                <label for="profession_filter">Occupation:</label>
+                <select id="profession_filter" name="profession_filter" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="filter_same_occupation">Match with same occupation:</label>
+                <input type="checkbox" id="filter_same_occupation" name="filter_same_occupation">
+            </div>
+            <div class="form-group">
+                <label for="move_in_date_start">Ideal Move-In Date (From):</label>
+                <input type="date" id="move_in_date_start" name="move_in_date_start"  min="2024-01-01" max="2025-12-31" required>
+            </div>
+            <div class="form-group">
+                <label for="move_in_date_end">Ideal Move-In Date (To):</label>
+                <input type="date" id="move_in_date_end" name="move_in_date_end" min="2024-01-01" max="2025-12-31" required>
+            </div>
+            <div class="form-group">
+                <label for="bio">Write a Short Bio About Yourself (300 Character Limit):</label>
+                <input type="text" id="bio" name="bio" placeholder="Introduce yourself!" required maxlength="300">
+            </div>
+            <div class="form-group">
+                <label for="contact_info">Indicate To Matches How To Contact You:</label>
+                <input type="text" id="contact_info" name="contact_info" placeholder="e.g., Phone number, Instagram handle, etc." required maxlength="300">
+            </div>
+            <div class="form-group">
+                <label>About Me:</label>
+                <select id="features" name="features" multiple="multiple" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+
+
+            <button id = "submit" type="submit">
+                <i class="material-icons">check_circle</i>
+                Create Profile
+            </button>
+            
+        </form>
+    </div>
+    <script src="../static/scripts/additional/jquery.min.js"></script>
+    <script src="../static/scripts/additional/select2.min.js"></script>
+    <script type="module" src="../static/scripts/form-scripts/userCreation.js"></script>
+    
+</body>
+</html>
+

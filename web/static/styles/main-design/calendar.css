@@ -1,0 +1,84 @@
+
+.calendar-container {
+    background: #f0f0f0; 
+    border-radius: 20px; 
+    z-index: 2; 
+    position: relative;
+    text-align: center;
+    width: 306px;
+    margin-bottom: 5px;
+    display: none;
+    height: 144px;
+    box-shadow: -2px 3px 5px rgba(0,0,0,0.1); 
+}
+
+
+
+.pikaday-container{
+    width: 95%;
+    margin: auto;
+
+}
+
+.pikaday-container .pika-single {
+
+    width: 90%; 
+    background-color: #f0f0f0; 
+    border: 0px ;
+    border-radius: 8px; 
+    font-family: 'Roboto', sans-serif; 
+    box-shadow: none; 
+    margin: auto;
+}
+
+.pika-next, .pika-prev, .pika-label{
+    font-size: 0.9em;
+    padding: 2px;
+    margin: 0px;
+    height: 100%;
+}
+abbr{
+    font-size: 0.9em;
+    margin-left: 8px;
+}
+
+.pikaday-container .pika-title {
+    color: #333; 
+    font-size: 0.9em;
+    height: 20px;
+}
+
+.pika-title{
+    padding-left: 1%;
+}
+
+
+
+.pika-lendar, .pika-table, .pika-row{
+    width: 95%;
+    height: 60%;
+    margin: auto;
+}
+
+.pikaday-container .pika-button {
+    color: #333; 
+    padding: 0px; 
+    font-size: 0.9em; 
+    outline: none; 
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+.pika-label{
+    background-color: #f0f0f0 ;
+}
+
+
+
+.pikaday-container .highlighted {
+    background-color: darkgray; 
+    border:   0px solid darkgray;
+    border-radius: 0px;
+    color: #111;
+}
+

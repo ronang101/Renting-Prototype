@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matches</title>
+
+    <link rel="stylesheet" href="../static/styles/additional/pikaday.min.css">
+    <link rel="stylesheet" href="../static/styles/main-design/recommendations.css">
+    <link rel="stylesheet" href="../static/styles/main-design/budget.css">
+    <link rel="stylesheet" href="../static/styles/main-design/about.css">
+    <link rel="stylesheet" href="../static/styles/main-design/mutual.css">
+    <link rel="stylesheet" href="../static/styles/main-design/calendar.css">
+    <link rel="stylesheet" href="../static/styles/main-design/contact.css">
+    <link rel="stylesheet" href="../static/styles/main-design/side-menu.css">
+    <link rel="stylesheet" href="../static/styles/main-design/bio-extra-info.css">
+    <link rel="stylesheet" href="../static/styles/main-design/report.css">
+    <link rel="stylesheet" href="../static/styles/animations/animations.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    
+</head>
+<body>
+    <h1>Matches</h1>
+    <div class="hamburger-menu-container">
+        <div class="hamburger-menu" id = "hamburger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div id="side-panel" class="side-panel">
+        <a  href="/view-recommendations" id="recommendation-link">Recommendations</a>
+        <a  href="/edit-profile" id="edit-profile-link">Edit Profile</a>
+        <a  href="/logout" id="logout-link">Logout</a>
+    </div>
+    <div id="no-recommendation-container" style="display: none; text-align:center;">
+        <h2>Check back later!</h2>
+        <p>It may take some time for other users to interact with your account. Check back later for any matches, or go like some more users!</p>
+    </div>
+    <div id="recommendation-container">                     
+        <!-- Recommendation will be loaded here -->
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth-compat.js"></script>   
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>  
+    <script src="../static/scripts/additional/pikaday.min.js"></script>   
+    <script type="module" src="../static/scripts/main-scripts/matches.js"></script>
+
+    
+    <div id="report-modal" class="report-modal">
+        <div class="report-modal-content">
+            <span class="report-close">&times;</span>
+            <h2 id = "report-title">Report User</h2>
+            <form id="report-form">
+                <input type="hidden" id="reportedUserId" name="reportedUserId" value="">
+                <p>Reason for reporting:</p>
+                <label class="report-option">
+                    <input type="radio" name="reason" value="inappropriate" checked>
+                    <span class="checkmark"></span>
+                    Inappropriate Content
+                </label>
+                <label class="report-option">
+                    <input type="radio" name="reason" value="abuse">
+                    <span class="checkmark"></span>
+                    Abuse
+                </label>
+                <label class="report-option">
+                    <input type="radio" name="reason" value="fake">
+                    <span class="checkmark"></span>
+                    Fake Account
+                </label>
+                <label class="report-option">
+                    <input type="radio" name="reason" value="other">
+                    <span class="checkmark"></span>
+                    Other
+                </label>
+                <input type="submit" value="Submit Report">
+            </form>
+        </div>
+    </div>
+    <div id="thank-modal" class="thank-modal">
+        <div id="thank-you-message" style="display: block;">
+            <p>Thank you! We will review your submission.</p>
+            <button id="thank-you-close-btn">Close</button>
+        </div>
+    </div>
+
+</body>
+</html>

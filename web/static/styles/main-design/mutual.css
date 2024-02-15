@@ -1,0 +1,120 @@
+
+.modal {
+  display: none; 
+  position: fixed; 
+  align-items: center; 
+  justify-content: center; 
+  z-index: 10; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.6); 
+  animation: fade-in 0.3s ease-out; 
+}
+
+
+
+
+
+.modal-content {
+  margin: auto;
+  position: relative;
+  background-color: #fff;
+  padding: 0;
+  border: none;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25); 
+  border-radius: 15px; 
+  animation: popIn 0.3s ease-out; 
+}
+
+
+
+
+
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.close:hover,
+.close:focus {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 15px;
+  background: #5CDB95;
+  color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+}
+
+.modal-title {
+  font-size: 1.8em;
+  margin: 0;
+  font-weight: 600;
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+}
+
+.modal-body {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100px; 
+  padding: 20px;
+  text-align: center; 
+}
+
+.match-text {
+  font-size: 1.4em;
+  margin-bottom: 0px;
+  color: #333;
+  font-weight: 400;
+  margin-top: 0px; 
+}
+
+.modal-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-close-btn {
+  background-color: #05386B;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  outline: none;
+  transition: background-color 0.3s, transform 0.1s; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-close-btn:hover {
+  background-color: #379683;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px); 
+}
+
+.modal-close-btn:active {
+  transform: translateY(1px); 
+}
