@@ -131,7 +131,7 @@ def get_recommendations_for_user(cur, conn, user_id, generate=True):
             filters, filter_uni, filter_prof = user_data
             # Generating mixed filtering recommendations.
             recommendations = mixed_filtering(
-                user_id, cur, conn, filters, filter_uni, filter_prof, 10)
+                user_id, cur, conn, filters, filter_uni, filter_prof, 1)
         else:
             # Check for any pre exisiting recommendations in the database that
             # haven't yet been interacted with.
