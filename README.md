@@ -6,7 +6,7 @@ The Renting Website Prototype is designed to be a prototype for a platform that 
 ## Getting Started
 To experience the platform users are required to create an account. Since this is only a prototype we only have a few human users, most are fake accounts, however, due to the ability to rent in any city in the UK it can be hard to find users due to filters, so below sets out how you must set up your account to see users.
 
-### Account Creation
+### Account Creation (The website is currently offline and the files require some configuration to run locally, feel free to email me for this configuration.)
 1. Visit https://renting-prototype-b75713326214.herokuapp.com/
 2. Click on "Sign in with Google"
 3. Fill in the required details, ensuring you meet the prerequisites listed below. The reason for these requirements is due to the way the website matches users. We look for users who fall within your selected age range, monthly budget range, looking in the same city as you, have some overlap in moving dates and you can also select to match based on university and occupation. Since this is only a prototype the fake users I have made fall within these ranges, hence why you must do the same. The prerequisites are here:
